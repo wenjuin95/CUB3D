@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:56:10 by welow             #+#    #+#             */
-/*   Updated: 2025/01/22 14:15:52 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/24 15:38:42 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define LEFT 65361
 # define RIGHT 65363
 # define MAP 109
+
+# define PI 3.142
 
 //campus
 # define MOVE_SPEED 0.1

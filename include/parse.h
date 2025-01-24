@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 14:56:20 by chtan             #+#    #+#             */
-/*   Updated: 2024/12/31 12:48:40 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/24 16:38:23 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int		parse_check(t_data *data);
 int		check_map_closed(char **map, int rows);
 void	check_map(t_data *data);
 int		check_map_details(t_data *data);
-void	flood_fill_recursive(char **map, int i, int j, int height);
+int	flood_fill_recursive(char **map, int i, int j, int height);
 int		flood_fill(char **map, int height);
-int		check_enclosed_space(char **map, int rows);
+int		check_enclosed_space(char **map, int rows, t_data *data);
 int		check_file(char *file);
 void	error_handling(t_map *map);
 void	error_handling2(t_map *map);

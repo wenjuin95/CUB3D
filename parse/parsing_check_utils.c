@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chtan <chtan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 10:23:38 by chtan             #+#    #+#             */
-/*   Updated: 2024/12/31 11:18:42 by chtan            ###   ########.fr       */
+/*   Updated: 2025/01/24 16:46:35 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
  * error handling to check is it the map is closed by wall
  * flood fill will start when there is a space in the map
  */
-int	check_enclosed_space(char **map, int rows)
+int	check_enclosed_space(char **map, int rows, t_data *data)
 {
 	char	**temp_map;
 
 	temp_map = duplicate_map(map, rows);
 	if (temp_map == NULL)
 		return (1);
-	if (flood_fill(temp_map, rows) == 1)
+	if (flood_fill_recursive(temp_map, data->player.pos_x, data->player.pos_y, rows) == 1)
 	{
 		free_array((void **)temp_map);
 		return (1);
@@ -32,42 +32,50 @@ int	check_enclosed_space(char **map, int rows)
 	return (0);
 }
 
-int	flood_fill(char **map, int height)
-{
-	int	i;
-	int	j;
+//int	flood_fill(char **map, int height)
+//{
+//	int	i;
+//	int	j;
 
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == ' ')
-				flood_fill_recursive(map, i, j, height);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
+//	i = 0;
+//	while (map[i])
+//	{
+//		j = 0;
+//		while (map[i][j])
+//		{
+//			if (map[i][j] == ' ')
+//			{
+//				printf("flood_fill_recursive: %d\n", flood_fill_recursive(map, i, j, height));
+//				if (flood_fill_recursive(map, i, j, height) == 1)
+//					return (1);
+//			}
+//			j++;
+//		}
+//		i++;
+//	}
+//	return (0);
+//}
 
-void	flood_fill_recursive(char **map, int i, int j, int height)
+int	flood_fill_recursive(char **map, int i, int j, int height)
 {
-	if (i < 0 || i >= height || j < 0 || j >= (int)ft_strlen(map[i])
-		|| map[i][j] == '1')
-		return ;
-	if (map[i][j] == ' ')
-	{
-		map[i][j] = 'X';
-		flood_fill_recursive(map, i + 1, j, height);
-		flood_fill_recursive(map, i - 1, j, height);
-		flood_fill_recursive(map, i, j + 1, height);
-		flood_fill_recursive(map, i, j - 1, height);
-	}
-	if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
-		|| map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == '\0')
-		return ;
+    // Check boundaries
+    if (i < 0 || i >= height || j < 0 || map[i][j] == '\0')
+        return 1;
+
+    // Check if the current cell is a wall or already visited
+    if (map[i][j] == '1' || map[i][j] == 'v')
+        return 0;
+
+    // Mark the current cell as visited
+    map[i][j] = 'v';
+
+	if (flood_fill_recursive(map, i - 1, j, height) ||
+		flood_fill_recursive(map, i + 1, j, height) ||
+		flood_fill_recursive(map, i, j - 1, height) ||
+		flood_fill_recursive(map, i, j + 1, height))
+		return (1);
+
+    return 0;
 }
 
 int	get_width(t_map *map)

@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:11:43 by chtan             #+#    #+#             */
-/*   Updated: 2025/01/24 13:35:14 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/24 16:37:33 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	check_map(t_data *data)
 		ft_error("map rows should more than 3");
 		clean_and_exit(data);
 	}
-	if (check_enclosed_space(data->map.map, data->map.map_height) == 1)
+	if (check_enclosed_space(data->map.map, data->map.map_height, data) == 1)
 	{
 		ft_error("flood fill error!");
 		clean_and_exit(data);

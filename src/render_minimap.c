@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 21:48:19 by welow             #+#    #+#             */
-/*   Updated: 2025/01/24 14:07:00 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/24 15:57:03 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,6 @@ void	render_minimap(t_data *data)
 		}
 		i++;
 	}
+	//draw_square(data, data->player.pos_x * MINIMAP_SIZE,
+	//	data->player.pos_y * MINIMAP_SIZE, MINIMAP_PLAYER);
 }
