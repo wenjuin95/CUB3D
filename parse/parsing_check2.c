@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chtan <chtan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:11:43 by chtan             #+#    #+#             */
-/*   Updated: 2024/12/31 11:46:18 by chtan            ###   ########.fr       */
+/*   Updated: 2025/01/24 13:35:14 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ int	check_valid_rgb(int *rgb)
 	return (0);
 }
 
-/**
- * just change all the space to 1
- */
-static void	replace_space_to_1(char **map, int map_height)
-{
-	int	i;
-	int	j;
+///**
+// * just change all the space to 1
+// */
+//static void	replace_space_to_1(char **map, int map_height)
+//{
+//	int	i;
+//	int	j;
 
-	i = 0;
-	while (i < map_height)
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == ' ')
-				map[i][j] = '1';
-			j++;
-		}
-		i++;
-	}
-}
+//	i = 0;
+//	while (i < map_height)
+//	{
+//		j = 0;
+//		while (map[i][j])
+//		{
+//			if (map[i][j] == ' ')
+//				map[i][j] = '1';
+//			j++;
+//		}
+//		i++;
+//	}
+//}
 
 /**
  * check is it the map is closed by wall again
@@ -57,12 +57,12 @@ static void	replace_space_to_1(char **map, int map_height)
  */
 int	check_map_details(t_data *data)
 {
-	if (check_map_closed(data->map.map, data->map.map_height) == 1)
-	{
-		ft_error("Map not surrounded by wall");
-		clean_and_exit(data);
-		exit(1);
-	}
+	//if (check_map_closed(data->map.map, data->map.map_height) == 1)
+	//{
+	//	ft_error("Map not surrounded by wall");
+	//	clean_and_exit(data);
+	//	exit(1);
+	//}
 	if (check_num_players(data->map.map) == 1)
 	{
 		clean_and_exit(data);
@@ -89,7 +89,7 @@ void	check_map(t_data *data)
 		ft_error("flood fill error!");
 		clean_and_exit(data);
 	}
-	replace_space_to_1(data->map.map, data->map.map_height);
+	//replace_space_to_1(data->map.map, data->map.map_height);
 	check_map_details(data);
 }
 

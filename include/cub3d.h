@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:56:10 by welow             #+#    #+#             */
-/*   Updated: 2025/01/21 12:02:11 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/22 14:15:52 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@
 # define MOUSE_ROTATE 0.025
 
 //campus
-//# define WIN_WIDTH 1280
-//# define WIN_HEIGHT 1024
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 1024
 
 ////full screen
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1200
+//# define WIN_WIDTH 1920
+//# define WIN_HEIGHT 1200
 
 ////full screen
 //# define MOVE_SPEED 0.9

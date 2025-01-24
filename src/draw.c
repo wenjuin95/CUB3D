@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 11:17:49 by welow             #+#    #+#             */
-/*   Updated: 2025/01/21 12:01:29 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/24 13:52:49 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void	get_texture_index(t_data *data, t_raycast *ray)
 */
 void	define_line_height(t_raycast *ray, t_data *data)
 {
-	ray->line_height = (int)(data->win_height / ray->wall_dis);
+	if (ray->wall_dis < 0.0001) // Prevent division by a very small number or zero
+        ray->wall_dis = 0.0001;
+	ray->line_height = (int)(WIN_HEIGHT / ray->wall_dis);
 	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
